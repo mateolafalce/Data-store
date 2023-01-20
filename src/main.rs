@@ -1,5 +1,7 @@
 use anyhow::Result;
 pub mod functions;
+mod constants;
+use constants::program;
 
 fn main() -> Result<()> {
     Ok(())
@@ -9,123 +11,50 @@ mod tests {
     use super::*;
     #[test]//cargo test decenwser1 -- --show-output
     fn decenwser1() {
-        use anchor_client::{
-            solana_sdk::{pubkey::Pubkey, signature::read_keypair_file},
-            Client, Cluster,
-        };
-        use std::rc::Rc;
-        use std::str::FromStr;
-        let program = Client::new(
-            Cluster::Devnet,
-            Rc::new(
-                read_keypair_file(&*shellexpand::tilde(
-                    "C:/Users/Mateo/.config/solana/id.json",
-                ))
-                .expect("Example requires a keypair file"),
-            ),
-        )
-        .program(Pubkey::from_str("4CXvM9ENhCMGsfz7YPjqDjAkqwLqMwTvw3SBq3YChBNN").unwrap());
         functions::decenwser1::decenwser1(
-            &program
+            &program::program().unwrap(),
         )
         .unwrap();
     }
     #[test]//cargo test main_account -- --show-output
     fn main_account() {
-        use anchor_client::{
-            solana_sdk::{pubkey::Pubkey, signature::read_keypair_file},
-            Client, Cluster,
-        };
-        use std::rc::Rc;
-        use std::str::FromStr;
-        let program = Client::new(
-            Cluster::Devnet,
-            Rc::new(
-                read_keypair_file(&*shellexpand::tilde(
-                    "C:/Users/Mateo/.config/solana/id.json",
-                ))
-                .expect("Example requires a keypair file"),
-            ),
-        )
-        .program(Pubkey::from_str("4CXvM9ENhCMGsfz7YPjqDjAkqwLqMwTvw3SBq3YChBNN").unwrap());
         functions::main_account::main_account(
-            &program,
-            "app".to_string()
+            &program::program().unwrap(),
+            "wifi2".to_string()
         )
         .unwrap();
     }
     #[test]//cargo test html_store -- --show-output
     fn html_store() {
-        use anchor_client::{
-            solana_sdk::{pubkey::Pubkey, signature::read_keypair_file},
-            Client, Cluster,
-        };
-        use std::rc::Rc;
-        use std::str::FromStr;
-        let program = Client::new(
-            Cluster::Devnet,
-            Rc::new(
-                read_keypair_file(&*shellexpand::tilde(
-                    "C:/Users/Mateo/.config/solana/id.json",
-                ))
-                .expect("Example requires a keypair file"),
-            ),
-        )
-        .program(Pubkey::from_str("4CXvM9ENhCMGsfz7YPjqDjAkqwLqMwTvw3SBq3YChBNN").unwrap());
         functions::html_store::html_store(
-            &program, 
-            "dsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfs1sddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfsddsfsdfsdfs".to_string(),
-            "app".to_string()
+            &program::program().unwrap(), 
+            "<label>Correo electrónico:</label><input type=#~email#~ name=#~email#~><br><label>Mensaje:</label>       <textarea name=#~message#~></textarea><br><input type=#~submit#~ value=#~Enviar#~></form></main><footer> <p>Copyright © 2021 Mi sitio web</p>   </footer>   <script type=#~text/javascript#~ src=#~script.js#~></script> </body> </html>".to_string(),
+            "app2".to_string()
         )
         .unwrap();
     }
     #[test]//cargo test css_store -- --show-output
     fn css_store() {
-        use anchor_client::{
-            solana_sdk::{pubkey::Pubkey, signature::read_keypair_file},
-            Client, Cluster,
-        };
-        use std::rc::Rc;
-        use std::str::FromStr;
-        let program = Client::new(
-            Cluster::Devnet,
-            Rc::new(
-                read_keypair_file(&*shellexpand::tilde(
-                    "C:/Users/Mateo/.config/solana/id.json",
-                ))
-                .expect("Example requires a keypair file"),
-            ),
-        )
-        .program(Pubkey::from_str("4CXvM9ENhCMGsfz7YPjqDjAkqwLqMwTvw3SBq3YChBNN").unwrap());
         functions::css_store::css_store(
-            &program, 
-            "dsfsdfsdfsd".to_string(),
-            "app".to_string()
+            &program::program().unwrap(),
+            "body {   font-family: Arial#! sans-serif;   margin: 0;   padding: 0; }  header#! footer {   background-color: #333;   color: #fff;   padding: 1em; }  nav ul {   list-style: none;   margin: 0;   padding: 0; }  nav li {   display: inline-block;   margin-right: 1em; }  nav a {   color: #333;   text-decoration: none; }  main {   padding: 1em; }  form label {   display: block;   margin-bottom: 0.5em; }  form input[type=#~submit#~] {   background-color: #333;   color: #fff;   padding: 0.5em;   border: none; }".to_string(),
+            "app2".to_string()
         )
         .unwrap();
     }
     #[test]//cargo test js_store -- --show-output
     fn js_store() {
-        use anchor_client::{
-            solana_sdk::{pubkey::Pubkey, signature::read_keypair_file},
-            Client, Cluster,
-        };
-        use std::rc::Rc;
-        use std::str::FromStr;
-        let program = Client::new(
-            Cluster::Devnet,
-            Rc::new(
-                read_keypair_file(&*shellexpand::tilde(
-                    "C:/Users/Mateo/.config/solana/id.json",
-                ))
-                .expect("Example requires a keypair file"),
-            ),
-        )
-        .program(Pubkey::from_str("4CXvM9ENhCMGsfz7YPjqDjAkqwLqMwTvw3SBq3YChBNN").unwrap());
         functions::js_store::js_store(
-            &program, 
+            &program::program().unwrap(),
             "dsfsdfsdfsd".to_string(),
             "app".to_string()
+        )
+        .unwrap();
+    }
+    #[test]//cargo test check -- --show-output
+    fn check() {
+        functions::check::check(
+            "react".to_string(),
         )
         .unwrap();
     }

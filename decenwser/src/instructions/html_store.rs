@@ -35,7 +35,7 @@ pub struct HtmlStore<'info> {
     #[account(mut,seeds = [b"Decenwser"],bump = decenwser.bump_original)]
     pub decenwser: Account<'info, DecenwserAccount>,
     #[account(init, seeds = [&decenwser.total_updates.to_le_bytes()], 
-    bump, payer = signer, space = JS::SIZE + 8)]
+    bump, payer = signer, space = HTML::SIZE + 8)]
     pub html_store: Account<'info, HTML>,
     #[account(mut)]
     pub signer: Signer<'info>,
